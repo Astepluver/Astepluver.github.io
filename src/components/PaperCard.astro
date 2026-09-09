@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Paper = CollectionEntry<'papers'>;
+
+interface Props {
+  paper: Paper;
+  index?: number;
+}
+
+const { paper, index = 0 } = Astro.props;
+const d = paper.data;
+
+const grads = [
+  '#0f766e,#155e75',
+  '#4f46e5,#0f766e',
+  '#b45309,#0f766e',
+  '#9d174d,#155e75',
+  '#065f46,#334155',
+];
+
+const coverStyle = d.cover
+  ? `background-image: url('${d.cover}'); background-size: cover; background-position: center;`
+  : `background: linear-gradient(135deg, ${grads[index % grads.length]});`;
+
+const search = [d.title, d.journal, d.note ?? '', d.authors ?? '', d.direction, ...d.tags]
+  .join(' ')
+  .toLowerCase();
+
+const doiHref = d.doi ? `https://doi.org/${d.doi}` : '';
+---
+
+<article
+  class="paper-card"
+  data-direction={d.direction}
+  data-year={d.year}
+  data-status={d.status}
+  data-search={search}
+>
+  <div class="paper-cover" style={coverStyle}>
+    <span>{d.oa ? 'Open Access' : '订阅 · 注意版权'}</span>
+  </div>
+  <div class="paper-body">
+    <h3 class="paper-title">{d.title}</h3>
+    <div class="paper-meta">
+      {d.journal} · {d.year}
+      {d.authors && <> · {d.authors}</>}
+    </div>
+    <div class="paper-tags">
+      <span class="chip">{d.direction}</span>
+      {d.tags.map((t) => <span class="chip chip-ghost">{t}</span>)}
+      <span class="chip chip-ghost">{d.status}</span>
+    </div>
+    {d.note && <p class="paper-note">{d.note}</p>}
+    <div class="paper-actions">
+      {doiHref ? (
+        <a class="btn btn-sm" href={doiHref} target="_blank" rel="noopener">在线阅读</a>
+      ) : (
+        <span class="btn btn-sm btn-disabled">DOI 待补充</span>
+      )}
+      {d.pdf ? (
+        <a class="btn btn-sm btn-primary" href={d.pdf} download>下载 PDF</a>
+      ) : d.oa ? (
+        <span class="btn btn-sm btn-disabled">PDF 待上传</span>
+      ) : (
+        <span class="btn btn-sm btn-disabled" title="订阅文献请勿公开传播，可只留摘要与官方链接">订阅文献</span>
+      )}
+    </div>
+  </div>
+</article>

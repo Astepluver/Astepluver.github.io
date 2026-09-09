@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import FeedCard from '../components/FeedCard.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('feed', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const kinds = [...new Set(items.map((i) => i.data.kind))];
+---
+
+<Base title="学习动态">
+  <div class="page-head">
+    <h1>学习动态</h1>
+    <p class="lead">学习打卡 · 文献速览 · 见习随想 —— 一条条拼成我的医学之路</p>
+  </div>
+
+  <div class="note">
+    动态由 <code>src/content/feed/</code> 下的 Markdown 自动生成：新建一个文件 = 发布一条动态，
+    自动按日期倒序排列。下方可<b>按栏目筛选</b>。
+  </div>
+
+  <div class="kind-filter">
+    <button class="chip kind-chip active" type="button" data-kind="all">全部</button>
+    {kinds.map((k) => (
+      <button class="chip kind-chip" type="button" data-kind={k}>{k}</button>
+    ))}
+  </div>
+
+  <div class="feed-list">
+    {items.map((item) => <FeedCard item={item} />)}
+  </div>
+</Base>
+
+<script is:inline>
+  (function () {
+    var chips = document.querySelectorAll('.kind-chip');
+    var cards = document.querySelectorAll('.feed-card');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var kind = chip.getAttribute('data-kind');
+        chips.forEach(function (c) { c.classList.toggle('active', c === chip); });
+        cards.forEach(function (card) {
+          card.style.display = kind === 'all' || card.getAttribute('data-kind') === kind ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>

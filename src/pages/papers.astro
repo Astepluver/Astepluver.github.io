@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import PaperCard from '../components/PaperCard.astro';
+import { getCollection } from 'astro:content';
+
+const papers = (await getCollection('papers', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title, 'zh')
+);
+
+const directions = [...new Set(papers.map((p) => p.data.direction))].sort((a, b) =>
+  a.localeCompare(b, 'zh')
+);
+const years = [...new Set(papers.map((p) => p.data.year))].sort((a, b) => b - a);
+const statuses = ['精读', '在读', '想读'];
+---
+
+<Base title="文献库">
+  <div class="page-head">
+    <h1>文献资料库</h1>
+    <p class="lead">收藏我喜欢的文献与研究方向的卡片集</p>
+  </div>
+
+  <div class="note">
+    文献保存在 <code>src/content/papers/</code>，支持<b>搜索 + 方向/年份/状态过滤</b>。
+    <b>版权提示</b>：公开下载仅限 OA 文献；订阅文献只展示摘要与官方链接。放入
+    <code>public/files/papers/</code> 的 PDF 会自动出现「下载 PDF」按钮。
+  </div>
+
+  <div class="filter-bar">
+    <input id="q" class="search-input" type="search" placeholder="🔍 搜索标题 / 期刊 / 点评…" />
+    <select id="sel-direction" class="filter-select" aria-label="按方向筛选">
+      <option value="all">全部方向</option>
+      {directions.map((d) => <option value={d}>{d}</option>)}
+    </select>
+    <select id="sel-year" class="filter-select" aria-label="按年份筛选">
+      <option value="all">全部年份</option>
+      {years.map((y) => <option value={y}>{y}</option>)}
+    </select>
+    <select id="sel-status" class="filter-select" aria-label="按阅读状态筛选">
+      <option value="all">全部状态</option>
+      {statuses.map((s) => <option value={s}>{s}</option>)}
+    </select>
+    <button id="reset" class="btn" type="button">重置</button>
+  </div>
+
+  <div class="paper-grid">
+    {papers.map((paper, i) => <PaperCard paper={paper} index={i} />)}
+  </div>
+
+  <div id="empty-tip" class="empty-tip">没有匹配的文献，换个筛选条件试试。</div>
+</Base>
+
+<script is:inline>
+  (function () {
+    var q = document.getElementById('q');
+    var selD = document.getElementById('sel-direction');
+    var selY = document.getElementById('sel-year');
+    var selS = document.getElementById('sel-status');
+    var resetBtn = document.getElementById('reset');
+    var emptyTip = document.getElementById('empty-tip');
+
+    function apply() {
+      var text = (q.value || '').trim().toLowerCase();
+      var d = selD.value;
+      var y = selY.value;
+      var s = selS.value;
+      var visible = 0;
+      document.querySelectorAll('.paper-card').forEach(function (card) {
+        var ok = true;
+        if (text && card.getAttribute('data-search').indexOf(text) < 0) ok = false;
+        if (ok && d !== 'all' && card.getAttribute('data-direction') !== d) ok = false;
+        if (ok && y !== 'all' && card.getAttribute('data-year') !== y) ok = false;
+        if (ok && s !== 'all' && card.getAttribute('data-status') !== s) ok = false;
+        card.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      emptyTip.style.display = visible ? 'none' : 'block';
+    }
+
+    q.addEventListener('input', apply);
+    selD.addEventListener('change', apply);
+    selY.addEventListener('change', apply);
+    selS.addEventListener('change', apply);
+    resetBtn.addEventListener('click', function () {
+      q.value = '';
+      selD.value = 'all';
+      selY.value = 'all';
+      selS.value = 'all';
+      apply();
+    });
+  })();
+</script>

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About">
+  <div class="page-head">
+    <h1>About 关于</h1>
+    <p class="lead">我是谁、关注什么、这个站想做成什么样</p>
+  </div>
+
+  <section class="prose">
+    <h2>自我介绍</h2>
+    <p>
+      <strong>Astepluver</strong>，基础医学（强基计划）大四在读，专业方向<b>病原生物学</b>。
+      聚焦<b>细菌耐药性</b>研究，尤其关注<b>分枝杆菌耐药</b>——结核分枝杆菌等病原的耐药
+      机制解析，以及全基因组测序在耐药快速检测与监测中的应用。
+    </p>
+
+    <h2>内容方向</h2>
+    <ul>
+      <li>Updates（学习动态）：日常学习打卡、文献速览、实验随想、科研进展</li>
+      <li>Library（文献库）：细菌耐药方向的精选文献卡片，按方向/年份/标签整理</li>
+      <li>（规划中）系统化的耐药机制学习笔记</li>
+    </ul>
+
+    <h2>写作红线</h2>
+    <blockquote>
+      1. 本站笔记仅为个人学习记录，不构成任何医疗或用药建议；<br />
+      2. 实验与临床相关内容绝不出现可识别患者/样本来源的敏感信息；<br />
+      3. 公开分享仅限开放获取（OA）文献，订阅文献只做摘要 + 官方链接，尊重版权。
+    </blockquote>
+
+    <div class="note">
+      如需修改这段简介或站点文案：简介在本文件
+      <code>src/pages/about.astro</code>，站名/副标题在 <code>src/consts.ts</code>。
+    </div>
+  </section>
+</Base>

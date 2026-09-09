@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import FeedCard from '../components/FeedCard.astro';
+import PaperCard from '../components/PaperCard.astro';
+import { SITE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const feeds = (await getCollection('feed', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const papers = (await getCollection('papers', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title, 'zh'))
+  .slice(0, 3);
+---
+
+<Base>
+  <section class="hero gothic-hero" style="text-align:center">
+    <h1>{SITE.title}</h1>
+    <p>
+      {SITE.description}
+      这里也收藏我关注的分枝杆菌耐药相关文献与研究方向。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/feed">浏览学习动态</a>
+      <a class="btn" href="/papers">进入文献库</a>
+      <a class="btn" href="/about">关于我</a>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h2>
+      <span>📖 最新动态</span>
+      <a href="/feed">查看全部 →</a>
+    </h2>
+    <div class="feed-list">
+      {feeds.map((item) => <FeedCard item={item} />)}
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h2>
+      <span>🗂 最新文献</span>
+      <a href="/papers">查看全部 →</a>
+    </h2>
+    <div class="paper-grid">
+      {papers.map((paper, i) => <PaperCard paper={paper} index={i} />)}
+    </div>
+  </section>
+</Base>

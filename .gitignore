@@ -1,0 +1,14 @@
+# build output
+dist/
+# generated types
+.astro/
+# dependencies
+node_modules/
+# pnpm local content-addressable store (created inside project dir)
+.pnpm-store/
+# logs
+npm-debug.log*
+pnpm-debug.log*
+# OS
+.DS_Store
+Thumbs.db

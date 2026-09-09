@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type FeedItem = CollectionEntry<'feed'>;
+
+interface Props {
+  item: FeedItem;
+}
+
+const { item } = Astro.props;
+const { data } = item;
+
+const fmt = (d: Date) =>
+  `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+---
+
+<article class="feed-card" data-kind={data.kind}>
+  <div class="feed-meta">
+    <span class="chip">{data.kind}</span>
+    {data.tags.map((t) => <span class="chip chip-ghost">{t}</span>)}
+    <span class="feed-date">{fmt(data.date)}</span>
+  </div>
+  {data.title && <p class="feed-title">{data.title}</p>}
+  <p class="feed-text">{item.body.trim()}</p>
+  {data.image && <img class="feed-img" src={data.image} alt="" loading="lazy" />}
+</article>
