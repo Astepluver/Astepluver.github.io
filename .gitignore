@@ -12,3 +12,5 @@ pnpm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+# ssh known_hosts used by connectivity tests
+.ssh_known_hosts

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const feeds = await getCollection('feed', ({ data }) => !data.draft);
+const papers = await getCollection('papers', ({ data }) => !data.draft);
+
+const fmt = (d: Date) =>
+  `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+
+const index = [
+  ...feeds.map((f) => ({
+    type: '动态',
+    title: f.data.title ?? (f.body || '').slice(0, 30),
+    href: '/feed',
+    when: fmt(f.data.date),
+    text: `${f.data.kind} ${(f.data.tags ?? []).join(' ')} ${f.body}`,
+  })),
+  ...papers.map((p) => ({
+    type: '文献',
+    title: p.data.title,
+    href: `/papers/${p.id}`,
+    when: String(p.data.year),
+    text: `${p.data.journal} ${p.data.direction} ${(p.data.tags ?? []).join(' ')} ${p.data.note ?? ''}`,
+  })),
+];
+
+const indexJson = JSON.stringify(index);
+---
+
+<Base title="Search">
+  <div class="search-hero page-head">
+    <h1>Search 搜索</h1>
+    <p class="lead">在全部动态与文献中检索（支持中文关键词）</p>
+  </div>
+
+  <input
+    id="q"
+    class="search-input-lg"
+    type="search"
+    placeholder="🔍 输入关键词，如：利福平 / rpoB / TB-Profiler / 文献速览…"
+    autocomplete="off"
+  />
+  <p id="count" class="note" style="margin-top:10px">输入关键词开始搜索。</p>
+
+  <div id="results" class="feed-list"></div>
+  <div id="empty" class="empty-tip">没有找到匹配内容，换个关键词试试。</div>
+</Base>
+
+<script type="application/json" id="search-data" set:html={indexJson}></script>
+
+<script is:inline>
+  (function () {
+    var INDEX = JSON.parse(document.getElementById('search-data').textContent);
+    var q = document.getElementById('q');
+    var results = document.getElementById('results');
+    var empty = document.getElementById('empty');
+    var count = document.getElementById('count');
+
+    function render() {
+      var kw = (q.value || '').trim().toLowerCase();
+      if (!kw) {
+        results.innerHTML = '';
+        count.textContent = '输入关键词开始搜索。';
+        empty.style.display = 'none';
+        return;
+      }
+      var matched = INDEX.filter(function (it) {
+        return (it.title + ' ' + it.text).toLowerCase().indexOf(kw) >= 0;
+      }).slice(0, 30);
+
+      count.textContent = matched.length ? '找到 ' + matched.length + ' 条结果：' : '没有找到匹配内容。';
+      empty.style.display = matched.length ? 'none' : 'block';
+      results.innerHTML = matched
+        .map(function (it) {
+          return (
+            '<article class="feed-card search-result"><a href="' + it.href + '"><h3>' +
+            escapeHtml(it.title) + '</h3></a>' +
+            '<p class="meta-line">' + it.type + ' · ' + escapeHtml(it.when) + '</p>' +
+            '<p class="snippet">' + escapeHtml(it.text.slice(0, 120)) + '</p></article>'
+          );
+        })
+        .join('');
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    q.addEventListener('input', render);
+  })();
+</script>

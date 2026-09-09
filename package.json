@@ -12,6 +12,9 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "@fontsource/unifrakturmaguntia": "^5.3.0"
+    "@fontsource/unifrakturmaguntia": "^5.3.0",
+    "katex": "^0.18.7",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   }
 }

@@ -41,7 +41,7 @@ const doiHref = d.doi ? `https://doi.org/${d.doi}` : '';
     <span>{d.oa ? 'Open Access' : '订阅 · 注意版权'}</span>
   </div>
   <div class="paper-body">
-    <h3 class="paper-title">{d.title}</h3>
+    <h3 class="paper-title"><a href={`/papers/${paper.id}`}>{d.title}</a></h3>
     <div class="paper-meta">
       {d.journal} · {d.year}
       {d.authors && <> · {d.authors}</>}
