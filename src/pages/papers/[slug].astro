@@ -36,6 +36,13 @@ const doiHref = d.doi ? `https://doi.org/${d.doi}` : '';
     {!d.oa && <span class="chip chip-ghost" title="订阅文献请勿公开传播">订阅文献 · 仅作记录</span>}
   </div>
 
+  {d.cover && (
+    <figure class="paper-figure">
+      <img src={d.cover} alt={d.title} loading="lazy" />
+      {d.coverCredit && <figcaption>{d.coverCredit}</figcaption>}
+    </figure>
+  )}
+
   <hr class="detail-divider" />
 
   <article class="prose">

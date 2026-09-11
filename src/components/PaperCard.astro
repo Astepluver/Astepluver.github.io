@@ -20,7 +20,7 @@ const grads = [
 ];
 
 const coverStyle = d.cover
-  ? `background-image: url('${d.cover}'); background-size: cover; background-position: center;`
+  ? `background-image: linear-gradient(rgba(6, 20, 24, 0.42), rgba(6, 20, 24, 0.42)), url('${d.cover}'); background-size: cover; background-position: center top; background-repeat: no-repeat;`
   : `background: linear-gradient(135deg, ${grads[index % grads.length]});`;
 
 const search = [d.title, d.journal, d.note ?? '', d.authors ?? '', d.direction, ...d.tags]

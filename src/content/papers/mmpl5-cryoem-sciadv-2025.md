@@ -9,6 +9,8 @@ status: 精读
 oa: true
 doi: "10.1126/sciadv.adx1129"
 pdf: /files/papers/sciadv-adx1129.pdf
+cover: /images/papers/mmpl5-cryoem-fig2.webp
+coverCredit: 封面图：Zhang Z, et al., Sci. Adv. 11, eadx1129 (2025), Fig. 2 · CC BY 4.0（按许可注明出处）
 note: 同组在 MMBR 综述之前的原始研究：从粗膜样本中一次性解析出 AcpM–MmpL5 二维阵列、AcpM–MmpL5–MmpS5 三聚体（3:3:3）与 AcpM–MmpL5 三聚体三套结构，回答了 MmpL5 的寡聚状态问题，并揭示"针状"跨膜转运机制。
 ---
 ## 精读笔记

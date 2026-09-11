@@ -55,6 +55,8 @@ const papers = defineCollection({
     pdf: z.string().optional(),
     /** 封面图（可选）：默认使用渐变色封面 */
     cover: z.string().optional(),
+    /** 封面图出处/授权说明（可选）：使用 OA 图片时建议注明，如 "Zhang et al., Sci. Adv. 2025, Fig. 2 (CC BY 4.0)" */
+    coverCredit: z.string().optional(),
     /** 一句话点评/笔记摘要，显示在卡片上 */
     note: z.string().optional(),
     draft: z.boolean().default(false),
