@@ -14,3 +14,5 @@ pnpm-debug.log*
 Thumbs.db
 # ssh known_hosts used by connectivity tests
 .ssh_known_hosts
+# 私有文献 PDF：仅本地留档，永不提交/发布
+private-papers/
