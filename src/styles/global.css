@@ -794,3 +794,30 @@ a:hover {
   font-family: "Cascadia Code", Consolas, monospace;
   border-top: 1px dashed var(--border);
 }
+
+/* ========== 关于页：座右铭（哥特英文） ========== */
+.motto {
+  margin: 18px 0;
+  padding: 20px 22px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 12px 12px 0;
+  text-align: center;
+}
+
+.motto-en {
+  margin: 0;
+  font-family: var(--font-gothic);
+  font-size: clamp(19px, 2.4vw, 26px);
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.motto footer {
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}

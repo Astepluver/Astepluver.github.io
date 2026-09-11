@@ -40,6 +40,11 @@ export const FRIENDS = [
       url: 'https://ff66ccff.github.io/2026/09/08/%E9%80%9F%E6%88%90%E8%B7%AF%E7%BA%BF/',
     },
   },
+  {
+    name: 'lalala',
+    url: 'https://wiki.lalala-233.top/',
+    desc: 'lalala 的小站 · 一个 Wiki 风格的站点',
+  },
 ];
 
 /** 站点统一免责声明 */
