@@ -53,6 +53,8 @@ const papers = defineCollection({
     doi: z.string().optional(),
     /** PDF 路径：把 PDF 放到 public/files/papers/ 后填相对路径，如 /files/papers/xxx.pdf */
     pdf: z.string().optional(),
+    /** 授权协议（可选）：如 "CC BY 4.0"、"CC BY-NC 4.0"；非商业限制需注意 */
+    license: z.string().optional(),
     /** 封面图（可选）：默认使用渐变色封面 */
     cover: z.string().optional(),
     /** 封面图出处/授权说明（可选）：使用 OA 图片时建议注明，如 "Zhang et al., Sci. Adv. 2025, Fig. 2 (CC BY 4.0)" */

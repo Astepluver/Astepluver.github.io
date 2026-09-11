@@ -31,6 +31,7 @@ const doiHref = d.doi ? `https://doi.org/${d.doi}` : '';
     <span class="chip">{d.direction}</span>
     {d.tags.map((t) => <span class="chip chip-ghost">{t}</span>)}
     <span class="chip chip-ghost">{d.status}</span>
+    {d.license && <span class="chip chip-ghost" title="授权协议">{d.license}</span>}
     {doiHref && <a class="btn btn-sm" href={doiHref} target="_blank" rel="noopener">在线阅读（DOI）</a>}
     {d.pdf && <a class="btn btn-sm btn-primary" href={d.pdf} download>下载 PDF</a>}
     {!d.oa && <span class="chip chip-ghost" title="订阅文献请勿公开传播">订阅文献 · 仅作记录</span>}
