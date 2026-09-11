@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { AI_CREDIT } from '../consts';
 ---
 
 <Base title="About">
@@ -33,8 +34,8 @@ import Base from '../layouts/Base.astro';
     <h2>致谢</h2>
     <p>
       本站的架构设计、界面样式、内容数据格式与 GitHub Actions 自动部署流程，
-      由 <b>DeepSeek Harness</b>（<code>deepseek-v4-flash</code>）作为
-      <b>AI 技术协作</b>协助实现。所有内容的选题、阅读、判断与写作均由我本人完成——
+      由 <b>{AI_CREDIT.name}</b>（<code>{AI_CREDIT.model}</code>）作为
+      <b>{AI_CREDIT.role}</b>协助实现。所有内容的选题、阅读、判断与写作均由我本人完成——
       它负责把想法变成能上线的站点，而这本「日记本」里写什么，始终是我自己的事。
     </p>
   </section>

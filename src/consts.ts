@@ -24,7 +24,7 @@ export const DISCLAIMER =
 export const AI_CREDIT = {
   role: 'AI 技术协作',
   name: 'DeepSeek Harness',
-  model: 'deepseek-v4-flash',
+  model: 'DeepSeek v4.1',
   note: '站点架构、界面样式、内容数据格式与自动部署流程由 AI 协作实现；所有内容的选题、阅读、判断与写作均出自站主本人。',
 };
 
