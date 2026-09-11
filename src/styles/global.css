@@ -740,3 +740,17 @@ a:hover {
   color: var(--muted);
   text-align: center;
 }
+
+/* ========== 页脚：AI 技术协作署名 ========== */
+.credit-line {
+  margin-top: 5px;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+.credit-line::before {
+  content: '◆ ';
+  color: var(--accent);
+  font-size: 10px;
+  vertical-align: 1px;
+}

@@ -20,6 +20,14 @@ export const NAV = [
 export const DISCLAIMER =
   '本站内容为个人学习记录与整理，仅供学习交流，不构成任何医疗建议。公开分享仅限开放获取（OA）文献。';
 
+/** 本站的 AI 技术协作署名 */
+export const AI_CREDIT = {
+  role: 'AI 技术协作',
+  name: 'DeepSeek Harness',
+  model: 'deepseek-v4-flash',
+  note: '站点架构、界面样式、内容数据格式与自动部署流程由 AI 协作实现；所有内容的选题、阅读、判断与写作均出自站主本人。',
+};
+
 /**
  * giscus 评论配置。
  * 启用方法：仓库 Settings → General 勾选 Discussions 开启讨论区；

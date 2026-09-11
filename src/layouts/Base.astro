@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import '@fontsource/unifrakturmaguntia';
 import 'katex/dist/katex.min.css';
-import { SITE, NAV, DISCLAIMER } from '../consts';
+import { SITE, NAV, DISCLAIMER, AI_CREDIT } from '../consts';
 
 interface Props {
   title?: string;
@@ -63,6 +63,9 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href.
     <footer class="site-footer">
       <div class="container">
         <div>© {new Date().getFullYear()} {SITE.author} · 用 Astro 构建 · 托管于 GitHub Pages</div>
+        <div class="credit-line" title={AI_CREDIT.note}>
+          {AI_CREDIT.role}：{AI_CREDIT.name}（{AI_CREDIT.model}）
+        </div>
         <div class="disclaimer">{DISCLAIMER}</div>
       </div>
     </footer>
