@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { FRIENDS } from '../consts';
+---
+
+<Base title="Links">
+  <div class="page-head">
+    <h1>Links 友链</h1>
+    <p class="lead">同行的朋友，以及我愿意推荐的站点</p>
+  </div>
+
+  <div class="card-grid friend-grid">
+    {
+      FRIENDS.map((f) => (
+        <div class="card friend-card">
+          <h3>
+            <a href={f.url} target="_blank" rel="noopener">
+              {f.name}
+            </a>
+          </h3>
+          <p class="desc">{f.desc}</p>
+          {f.read && (
+            <p class="friend-read">
+              推荐阅读：<a href={f.read.url} target="_blank" rel="noopener">{f.read.label}</a>
+            </p>
+          )}
+          <p class="friend-host">{new URL(f.url).host}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="note" style="margin-top:24px">
+    本站只收录我认识或长期阅读的站点；朋友的站点内容由各自作者负责。
+  </div>
+</Base>

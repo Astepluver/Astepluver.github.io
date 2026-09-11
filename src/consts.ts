@@ -13,7 +13,33 @@ export const NAV = [
   { href: '/feed', label: 'Updates' },
   { href: '/papers', label: 'Library' },
   { href: '/search', label: 'Search' },
+  { href: '/links', label: 'Links' },
   { href: '/about', label: 'About' },
+];
+
+/**
+ * 友链：新增朋友时在这里加一条即可。
+ * read 为可选的「推荐阅读」条目（指向朋友某篇具体文章）。
+ */
+export const FRIENDS = [
+  {
+    name: '令雨',
+    url: 'https://lingyu061126.github.io/',
+    desc: '一名普通的人类观察员 · 电气专业本科生的学习笔记与碎碎念（电磁场、概率统计、微积分）',
+    read: {
+      label: '微积分证明（1）',
+      url: 'https://lingyu061126.github.io/2026/02/25/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%81%E6%98%8E%EF%BC%881%EF%BC%89/',
+    },
+  },
+  {
+    name: '电子鱼',
+    url: 'https://ff66ccff.github.io/',
+    desc: '编程与生活随笔 · Vibe Coding、C++ 竞赛笔记与大学日常',
+    read: {
+      label: 'Vibe Coding 入门指南（速成路线）',
+      url: 'https://ff66ccff.github.io/2026/09/08/%E9%80%9F%E6%88%90%E8%B7%AF%E7%BA%BF/',
+    },
+  },
 ];
 
 /** 站点统一免责声明 */
