@@ -821,3 +821,29 @@ a:hover {
   color: var(--muted);
   letter-spacing: 0.3px;
 }
+
+/* ========== 头像 ========== */
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 4px;
+}
+
+.avatar {
+  width: min(320px, 72%);
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.hero-avatar {
+  width: min(200px, 48%);
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
