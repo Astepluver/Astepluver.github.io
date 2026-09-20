@@ -18,3 +18,5 @@ Thumbs.db
 private-papers/
 # 临时探测用的克隆目录（不是本博客的一部分）
 .repoprobe/
+# 临时下载/脚本目录（不是本博客的一部分）
+.tmpfetch/
