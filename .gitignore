@@ -16,3 +16,5 @@ Thumbs.db
 .ssh_known_hosts
 # 私有文献 PDF：仅本地留档，永不提交/发布
 private-papers/
+# 临时探测用的克隆目录（不是本博客的一部分）
+.repoprobe/
