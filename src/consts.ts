@@ -45,6 +45,15 @@ export const FRIENDS = [
     url: 'https://wiki.lalala-233.top/',
     desc: 'lalala 的小站 · 一个 Wiki 风格的站点',
   },
+  {
+    name: '寒火',
+    url: 'https://coldflame324.github.io/',
+    desc: '篝火边，冷饮摊 · 读书笔记与日常随笔（尼采、卡夫卡、哲学与小说）',
+    read: {
+      label: '《悲剧的诞生》读书笔记',
+      url: 'https://coldflame324.github.io/posts/%E6%82%B2%E5%89%A7%E7%9A%84%E8%AF%9E%E7%94%9F%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/',
+    },
+  },
 ];
 
 /** 站点统一免责声明 */
