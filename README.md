@@ -82,7 +82,7 @@
 
 ## 下载与安装
 
-**[dsh-sci-viz-2.0.0.tgz](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.tgz)**（约 1 MB，MIT）
+**[dsh-sci-viz-2.0.0.tgz](https://github.com/Astepluver/Astepluver.github.io/releases/download/v2.0.0/dsh-sci-viz-2.0.0.tgz)**（约 1 MB，MIT · [Release 页面](https://github.com/Astepluver/Astepluver.github.io/releases/tag/v2.0.0)）
 · [sha256 校验和](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.sha256.txt)
 · [源码 zip](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.zip)
 
@@ -91,14 +91,14 @@
 
 ```
 1. DSH → 设置 → 插件，在安装框里粘贴这一行：
-   https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.tgz
+   https://github.com/Astepluver/Astepluver.github.io/releases/download/v2.0.0/dsh-sci-viz-2.0.0.tgz
 2. 等它装完（列表里会出现 dsh-sci-viz 2.0.0）
 3. 重启一次 DSH
 4. 刷新页面，右下角会出现一枚可拖动的药丸图标，点它打开面板
 ```
 
-> 同一个文件也挂在博客域名下，两个地址等价、都能装：
-> `https://astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.tgz`
+> 同一个文件在仓库里也有一份，两个地址等价、都能装：
+> `https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.tgz`
 
 **没有网络 / 想手动装**：下载 zip 解压，在**同一个安装框**里填解压出来的目录的**绝对路径**
 （例如 `C:\Users\你\Downloads\dsh-sci-viz`）。不要填 zip 文件本身的路径。
