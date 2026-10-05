@@ -82,15 +82,23 @@
 
 ## 下载与安装
 
-**[dsh-sci-viz-2.0.0.zip](https://Astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.zip)**（约 1 MB，MIT）
+**[dsh-sci-viz-2.0.0.tgz](https://Astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.tgz)**（约 1 MB，MIT）
 · [sha256 校验和](https://Astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.sha256.txt)
+· [源码 zip](https://Astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.zip)
+
+> **用 `.tgz` 那个，不要用 zip。** DSH 的插件安装框只认四种规格：npm 包名、GitHub 仓库地址、
+> 本地绝对目录路径、**.tgz / .tar.gz 直链** —— zip 不在其中。所以：
 
 ```
-1. 解压，得到 dsh-sci-viz 目录（路径里最好不要有空格）
-2. 打开 DSH → 设置 → 插件，添加本地插件，指向这个目录
-3. 启用，然后重启一次 DSH
+1. DSH → 设置 → 插件，在安装框里粘贴这一行：
+   https://Astepluver.github.io/files/plugins/dsh-sci-viz-2.0.0.tgz
+2. 等它装完（列表里会出现 dsh-sci-viz 2.0.0）
+3. 重启一次 DSH
 4. 刷新页面，右下角会出现一枚可拖动的药丸图标，点它打开面板
 ```
+
+**没有网络 / 想手动装**：下载 zip 解压，在**同一个安装框**里填解压出来的目录的**绝对路径**
+（例如 `C:\Users\你\Downloads\dsh-sci-viz`）。不要填 zip 文件本身的路径。
 
 第 3 步不能省：插件分两半，负责计算的宿主半边是 ESM 模块，Node 按 URL 缓存，
 改完只有重启才会重新加载。装好之后可以打开
