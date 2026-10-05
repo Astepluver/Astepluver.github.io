@@ -82,23 +82,23 @@
 
 ## 下载与安装
 
-**[dsh-sci-viz-2.0.0.tgz](https://github.com/Astepluver/Astepluver.github.io/releases/download/v2.0.0/dsh-sci-viz-2.0.0.tgz)**（约 1 MB，MIT · [Release 页面](https://github.com/Astepluver/Astepluver.github.io/releases/tag/v2.0.0)）
-· [sha256 校验和](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.sha256.txt)
-· [源码 zip](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.zip)
+**[dsh-sci-viz-3.0.0.tgz](https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.0/dsh-sci-viz-3.0.0.tgz)**（约 1.1 MB，MIT · [Release 页面](https://github.com/Astepluver/Astepluver.github.io/releases/tag/v3.0.0)）
+· [sha256 校验和](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.sha256.txt)
+· [源码 zip](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.zip)
 
 > **用 `.tgz` 那个，不要用 zip。** DSH 的插件安装框只认四种规格：npm 包名、GitHub 仓库地址、
 > 本地绝对目录路径、**.tgz / .tar.gz 直链** —— zip 不在其中。所以：
 
 ```
 1. DSH → 设置 → 插件，在安装框里粘贴这一行：
-   https://github.com/Astepluver/Astepluver.github.io/releases/download/v2.0.0/dsh-sci-viz-2.0.0.tgz
-2. 等它装完（列表里会出现 dsh-sci-viz 2.0.0）
+   https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.0/dsh-sci-viz-3.0.0.tgz
+2. 等它装完（列表里会出现 dsh-sci-viz 3.0.0）
 3. 重启一次 DSH
 4. 刷新页面，右下角会出现一枚可拖动的药丸图标，点它打开面板
 ```
 
 > 同一个文件在仓库里也有一份，两个地址等价、都能装：
-> `https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-2.0.0.tgz`
+> `https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.tgz`
 
 **没有网络 / 想手动装**：下载 zip 解压，在**同一个安装框**里填解压出来的目录的**绝对路径**
 （例如 `C:\Users\你\Downloads\dsh-sci-viz`）。不要填 zip 文件本身的路径。
@@ -111,6 +111,35 @@
 ---
 
 ## 更新说明
+
+### 3.0.0 · 热图、生存曲线、网络图、序列 Logo、矢量导出
+
+上一版把「能画什么」扩展到了基因组学；这一版补的是**最常见的几类图、真实数据规模、
+以及投稿要的矢量输出**。
+
+**新增五种图**：
+
+| 图 | 要点 |
+|---|---|
+| **热图** | 发散色阶把 0 放正中，可选**行列层次聚类树**，带色阶条 |
+| **序列 Logo** | 字母高度 = 信息量（bits），自动区分核酸/蛋白，**间隙不计入统计** |
+| **基因互作网络** | 力导向布局，**无随机数** —— 同输入必得同图 |
+| **生存曲线** | KM 阶梯 + **删失竖杠** + 中位虚线 + log-rank 检验 |
+| **ROC 曲线** | 正方形绘图区（否则曲线形状会骗人）+ AUC + 最佳切点，支持多模型对比 |
+
+**数值内核新增 KM / log-rank / ROC**，与 scipy 逐项对拍：中位生存期、事件数、删失数完全一致，
+log-rank 的 χ² 相对误差 **1.2e-16**，AUC 精确吻合。
+
+**真实数据规模**：变异超过 600 个自动改画密度柱（柱高 ∝ √该箱变异数）。
+实测 2.4 万个变异 → **496 个柱子、0 条刻度线**；逐点画会糊成一条实线，等于没画。
+
+**面板上能自己干活了**：基因组页顶部新增输入条，粘贴 Newick / FASTA / 富集 TSV / 火山 TSV /
+覆盖度 / 热图矩阵 / 变异列表 / 边表就能出图，Ctrl+Enter 直接跑。解析放在宿主完成，
+所以报错是人话（「序列长度不一致（4–5）：比对图要求先把序列比对好」）。
+
+**SVG 矢量导出**：所有面板本来就用 Canvas 2D 画，与其再写一套矢量绘制代码（两份实现必然漂移），
+不如把同一批绘制调用**录进 SVG** —— 每个元素带一个 matrix 变换，旋转过的文字和缩放过的路径
+都能精确还原。10 种面板全部验证产出合法 SVG。
 
 ### 2.0.0 · 基因组学可视化
 
