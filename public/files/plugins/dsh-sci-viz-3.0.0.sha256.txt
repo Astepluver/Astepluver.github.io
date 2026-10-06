@@ -1,2 +1,0 @@
-f75a34c9ab802f94c68b1de9e6194ce5246deeb2767fab6a8ecce491a50d3440  dsh-sci-viz-3.0.0.zip
-2cddba4a59fbc837898507469b06860ff9241b7eea963ebf26294482c0d6dce7  dsh-sci-viz-3.0.0.tgz

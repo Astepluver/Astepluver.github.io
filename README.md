@@ -82,23 +82,23 @@
 
 ## 下载与安装
 
-**[dsh-sci-viz-3.0.0.tgz](https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.0/dsh-sci-viz-3.0.0.tgz)**（约 1.1 MB，MIT · [Release 页面](https://github.com/Astepluver/Astepluver.github.io/releases/tag/v3.0.0)）
-· [sha256 校验和](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.sha256.txt)
-· [源码 zip](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.zip)
+**[dsh-sci-viz-3.0.1.tgz](https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.1/dsh-sci-viz-3.0.1.tgz)**（约 1.1 MB，MIT · [Release 页面](https://github.com/Astepluver/Astepluver.github.io/releases/tag/v3.0.1)）
+· [sha256 校验和](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.1.sha256.txt)
+· [源码 zip](https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.1.zip)
 
 > **用 `.tgz` 那个，不要用 zip。** DSH 的插件安装框只认四种规格：npm 包名、GitHub 仓库地址、
 > 本地绝对目录路径、**.tgz / .tar.gz 直链** —— zip 不在其中。所以：
 
 ```
 1. DSH → 设置 → 插件，在安装框里粘贴这一行：
-   https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.0/dsh-sci-viz-3.0.0.tgz
-2. 等它装完（列表里会出现 dsh-sci-viz 3.0.0）
+   https://github.com/Astepluver/Astepluver.github.io/releases/download/v3.0.1/dsh-sci-viz-3.0.1.tgz
+2. 等它装完（列表里会出现 dsh-sci-viz 3.0.1）
 3. 重启一次 DSH
 4. 刷新页面，右下角会出现一枚可拖动的药丸图标，点它打开面板
 ```
 
 > 同一个文件在仓库里也有一份，两个地址等价、都能装：
-> `https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.0.tgz`
+> `https://github.com/Astepluver/Astepluver.github.io/raw/main/public/files/plugins/dsh-sci-viz-3.0.1.tgz`
 
 **没有网络 / 想手动装**：下载 zip 解压，在**同一个安装框**里填解压出来的目录的**绝对路径**
 （例如 `C:\Users\你\Downloads\dsh-sci-viz`）。不要填 zip 文件本身的路径。
@@ -111,6 +111,14 @@
 ---
 
 ## 更新说明
+
+### 3.0.1 · 独立窗口
+
+工具栏多了「**⧉ 独立窗口**」：把可视化放进一个真正独立的窗口，可以拖到聊天框旁边、
+或全屏丢到第二块屏 —— **对着聊天框看图，不用来回切标签页**。
+
+那个窗口**用的还是插件的渲染器**（同一份代码，没重写），所以三维结构照样能拖能缩放，
+另有 PNG / SVG 导出与「跟随更新」开关。地址只绑回环，非本机访问一律拒绝。
 
 ### 3.0.0 · 热图、生存曲线、网络图、序列 Logo、矢量导出
 
